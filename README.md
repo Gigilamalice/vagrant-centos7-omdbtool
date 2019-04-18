@@ -1,11 +1,17 @@
 # vagrant-centos7-omdbtool
 
-Create a vagrant box CENTOS/7 to run OMDBTOOL to retreive by example movies thumbdnail 
+Create a vagrant box CENTOS/7 to run OMDBTOOL to retreive by example movies thumbdnail
+
+
+- [x] Write the press release
+- [ ] Update the website
+- [ ] Contact the media
+
 
 ## Projects and references
 
-* https://github.com/osmiyaki/omdbtool
-* https://linuxacademy.com/blog/linux/vagrant-cheat-sheet-get-started-with-vagrant/
+* <https://github.com/osmiyaki/omdbtool>
+* <https://linuxacademy.com/blog/linux/vagrant-cheat-sheet-get-started-with-vagrant/>
 
 ## Github
 
@@ -26,7 +32,7 @@ git push
 
 ## OmDB Tool
 
-Create an OMDB API KEY: http://www.omdbapi.com/apikey.aspx
+Create an OMDB API KEY: <http://www.omdbapi.com/apikey.aspx>
 
 Add via sed or manually your OMDB_APIKEY in the vagrant file  
 
@@ -35,6 +41,22 @@ sed -i -e 's/OMDBAPIKEY/YOUR_OMDBAPIKEY/g' vagrant
 ```
 
 ## Vagrant tool
+
+Install plugin tool
+
+Scp between guest and host
+
+```shell
+# 1 - Install pluginvagrant plugin
+install vagrant-vbguest
+install vagrant-scp
+# 2 - Retreive ID vm
+vagrant global-status
+# 3a - Copy file or directory from Vagrant host machine to guest VM:
+vagrant scp <some_local_file_or_dir> <vm_name>:<some_path_on_vm>
+# 3b Copy file or directory from guest VM to Vagrant host machine:
+vagrant scp <vm_name>:<some_file_or_dir_on_vm> <some_local_path>
+```
 
 Start Vagrant box
 
@@ -47,6 +69,13 @@ Stop vagrant box
 
 ```shell
 vagrant halt
+```
+
+To a rsync from host to vagrant box (guest)
+
+```shell
+vagrant rsyn
+vagrant rsyn-auto
 ```
 
 Delete vagrant box

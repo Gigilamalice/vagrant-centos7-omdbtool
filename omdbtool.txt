@@ -1,0 +1,26 @@
+# Install OMDBTOOL
+#
+# https://github.com/osmiyaki/omdbtool
+#
+
+# fix locale warning
+
+echo LANG=en_US.utf-8 >> /etc/environment
+echo LC_ALL=en_US.utf-8 >> /etc/environment
+
+sudo yum update -y
+
+sudo yum install wget -y
+sudo yum install git -y
+sudo yum install pip
+sudo yum -y install python-pip -y
+
+
+git clone https://github.com/bgr/omdb-cli.git
+
+cd omdb-cli.git
+
+echo "alias omdbtool='python /home/vagrant/omdb-cli/omdbtool.py'" >> .bashrc
+echo "export OMDB_API_KEY=b8c4671d" >> .bashrc
+
+

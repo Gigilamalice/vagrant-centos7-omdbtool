@@ -18,6 +18,7 @@ git clone https://github.com/bgr/omdb-cli.git
 echo "alias omdbtool='python /home/vagrant/omdb-cli/omdbtool.py'" >> .bashrc
 echo "export OMDB_API_KEY=OMDBAPIKEY" >> .bashrc
 echo "export OMDB_API_KEY=b8c4671d" >> .bashrc
+source .bashrc
 
 cd omdb-cli
 omdbtool

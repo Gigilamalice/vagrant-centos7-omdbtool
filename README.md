@@ -1,32 +1,53 @@
 # vagrant-centos7-omdbtool
 
 Creation d'une box vagrant CENTOS/7 et OMDBTOOL pour recuperer des jaquettes de films 
-Projets et références utilisés:
-- https://github.com/osmiyaki/omdbtool
-- https://linuxacademy.com/blog/linux/vagrant-cheat-sheet-get-started-with-vagrant/
 
-* Git clone the projet
 
-''git clone https://github.com/Gigilamalice/vagrant-centos7-omdbtool.git''
+## Projets et références utilisés:
 
-''
+* https://github.com/osmiyaki/omdbtool
+* https://linuxacademy.com/blog/linux/vagrant-cheat-sheet-get-started-with-vagrant/
+
+## Github
+
+Git clone du projet
+
+``` bash
+git clone https://github.com/Gigilamalice/vagrant-centos7-omdbtool.git''
+cd vagrant-centos7-omdbtool
+```
+
+Mise à jour du repo
+
+```bash
 git commit -m "version initiale du projet"
 git add .
 git push
-''
+```
 
-* Start Vagrant box
+## Vagrant
 
-''
+Démarrage de la Vagrant box
+
+```bash
 vagrant up
 vagrant ssh
-''
+```
+
+Arrêt de la vagrant box
+```bash
+vagrant halt
+```
 
 
-# Creation du fichier vagrant file
-#
-# https://github.com/osmiyaki/omdbtool
-#
+Suppression de la vagrant box
+```bash
+vagrant destroy
+```
+
+
+## Creation du fichier vagrant file
+
 
 ## fix locale warning
 

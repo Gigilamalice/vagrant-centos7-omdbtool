@@ -1,9 +1,9 @@
 # vagrant-centos7-omdbtool
 
-Creation d'une box vagrant CENTOS/7 et OMDBTOOL pour recuperer des jaquettes de films 
+Create a vagrant box CENTOS/7 to run OMDBTOOL to retreive by example movies thumbdnail 
 
 
-## Projets et références
+## Projects and references
 
 * https://github.com/osmiyaki/omdbtool
 * https://linuxacademy.com/blog/linux/vagrant-cheat-sheet-get-started-with-vagrant/
@@ -25,35 +25,39 @@ git commit -m "version initiale du projet"
 git push
 ```
 
-## OMBTOOL
-> Création de l'OMDB APIKEY via ce lien:
-> http://www.omdbapi.com/apikey.aspx
+## OmDB Tool
 
-> Add manually or via sed your OMDB_APIKEY in the vagrant file  
+> Create an OMDB API KEY: http://www.omdbapi.com/apikey.aspx
+
+> Add via sed or manually your OMDB_APIKEY in the vagrant file  
 
 ```shell
 sed -i -e 's/OMDBAPIKEY/YOUR_OMDBAPIKEY/g' vagrant
 ```
 
 
-## Vagrant
+## Vagrant tool
 
-> Démarrage de la Vagrant box
+> Start Vagrant box
 
 ```shell
 vagrant up
 vagrant ssh
 ```
 
-> Arrêt de la vagrant box
+> Stop vagrant box
 ```shell
 vagrant halt
 ```
 
-
-> Suppression de la vagrant box
+> Delete vagrant box
 ```shell
 vagrant destroy
+```
+
+> vagrant ssh config for putty by example
+```shell
+vagrant ssh-config
 ```
 
 

@@ -2,7 +2,6 @@
 
 Create a vagrant box CENTOS/7 to run OMDBTOOL to retreive by example movies thumbdnail 
 
-
 ## Projects and references
 
 * https://github.com/osmiyaki/omdbtool
@@ -10,14 +9,14 @@ Create a vagrant box CENTOS/7 to run OMDBTOOL to retreive by example movies thum
 
 ## Github
 
-> Git clone du projet
+Git clone du projet
 
 ``` shell
-git clone https://github.com/Gigilamalice/vagrant-centos7-omdbtool.git''
+git clone https://github.com/Gigilamalice/vagrant-centos7-omdbtool.git
 cd vagrant-centos7-omdbtool
 ```
 
-> Mise à jour du repo
+Mise à jour du repo
 
 ```shell
 git add .
@@ -27,41 +26,40 @@ git push
 
 ## OmDB Tool
 
-> Create an OMDB API KEY: http://www.omdbapi.com/apikey.aspx
+Create an OMDB API KEY: http://www.omdbapi.com/apikey.aspx
 
-> Add via sed or manually your OMDB_APIKEY in the vagrant file  
+Add via sed or manually your OMDB_APIKEY in the vagrant file  
 
 ```shell
 sed -i -e 's/OMDBAPIKEY/YOUR_OMDBAPIKEY/g' vagrant
 ```
 
-
 ## Vagrant tool
 
-> Start Vagrant box
+Start Vagrant box
 
 ```shell
 vagrant up
 vagrant ssh
 ```
 
-> Stop vagrant box
+Stop vagrant box
+
 ```shell
 vagrant halt
 ```
 
-> Delete vagrant box
+Delete vagrant box
+
 ```shell
 vagrant destroy
 ```
 
-> vagrant ssh config for putty by example
+vagrant ssh config for putty by example
+
 ```shell
 vagrant ssh-config
 ```
-
-
-
 
 ## Vagrant file
 

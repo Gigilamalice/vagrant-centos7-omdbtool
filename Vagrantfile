@@ -1,11 +1,10 @@
 $samplescript = <<SCRIPT
 
+# yum update -y
+
 yum install -y wget
 yum install -y git
-
-# yum install -y httpd
-# systemctl enable httpd
-# systemctl start httpd
+# yum -y install python-pip -y
 
 # fix locale warning
 
@@ -15,13 +14,14 @@ echo LC_ALL=en_US.utf-8 >> /etc/environment
 su vagrant
 
 git clone https://github.com/bgr/omdb-cli.git
-cd omdb-cli.git
 
 echo "alias omdbtool='python /home/vagrant/omdb-cli/omdbtool.py'" >> .bashrc
 echo "export OMDB_API_KEY=OMDBAPIKEY" >> .bashrc
 echo "export OMDB_API_KEY=b8c4671d" >> .bashrc
 
-#
+cd omdb-cli
+omdbtool
+
 
 SCRIPT
 

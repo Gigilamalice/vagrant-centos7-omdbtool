@@ -2,12 +2,6 @@
 
 Create a vagrant box CENTOS/7 to run OMDBTOOL to retreive by example movies thumbdnail
 
-
-- [x] Write the press release
-- [ ] Update the website
-- [ ] Contact the media
-
-
 ## Projects and references
 
 * <https://github.com/osmiyaki/omdbtool>
@@ -15,10 +9,10 @@ Create a vagrant box CENTOS/7 to run OMDBTOOL to retreive by example movies thum
 
 ## Github
 
-Git clone du projet
+Git project Clone, you can choose target folde
 
 ``` shell
-git clone https://github.com/Gigilamalice/vagrant-centos7-omdbtool.git
+git clone https://github.com/Gigilamalice/vagrant-centos7-omdbtool.git vagrant-centos7-omdbtool
 cd vagrant-centos7-omdbtool
 ```
 
@@ -42,14 +36,20 @@ sed -i -e 's/OMDBAPIKEY/YOUR_OMDBAPIKEY/g' vagrant
 
 ## Vagrant tool
 
-Install plugin tool
+add box
+
+```shell
+vagrant box add centos/7
+```
+
+Install vagrant plugin tool
 
 Scp between guest and host
 
 ```shell
 # 1 - Install pluginvagrant plugin
-install vagrant-vbguest
-install vagrant-scp
+vagrant install vagrant-vbguest
+vagrant install vagrant-scp
 # 2 - Retreive ID vm
 vagrant global-status
 # 3a - Copy file or directory from Vagrant host machine to guest VM:

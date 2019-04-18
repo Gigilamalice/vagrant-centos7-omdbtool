@@ -20,6 +20,7 @@ cd omdb-cli.git
 echo "alias omdbtool='python /home/vagrant/omdb-cli/omdbtool.py'" >> .bashrc
 echo "export OMDB_API_KEY=b8c4671d" >> .bashrc
 
+#
 
 SCRIPT
 

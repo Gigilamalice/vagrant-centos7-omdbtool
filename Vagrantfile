@@ -11,11 +11,11 @@ yum install -y git
 echo LANG=en_US.utf-8 >> /etc/environment
 echo LC_ALL=en_US.utf-8 >> /etc/environment
 
-su vagrant
-cd /home/vagrant
-pwd
 
 git clone https://github.com/bgr/omdb-cli.git
+cd /home/vagrant
+pwd
+sudo chown vagrant:vagrant omdb-cli -R
 
 echo "alias omdbtool='python /home/vagrant/omdb-cli/omdbtool.py'" >> /home/vagrant/.bashrc
 echo "export OMDB_API_KEY=OMDBAPIKEY" >> /home/vagrant/.bashrc
@@ -35,33 +35,34 @@ VAGRANTFILE_API_VERSION = "2"
 NAME = "omdbtool01"
 
 # unless Vagrant.has_plugin?("vagrant-reload")
-#  puts 'Installing vagrant-reload Plugin...'
+puts 'Installing vagrant-reload Plugin...'
 #  system('vagrant plugin install vagrant-reload')
 # end
 
 # unless Vagrant.has_plugin?("vagrant-proxyconf")
-#  puts 'Installing vagrant-proxyconf Plugin...'
+puts 'Installing vagrant-proxyconf Plugin...'
 #  system('vagrant plugin install vagrant-proxyconf')
 # end
 
-unless Vagrant.has_plugin?("vagrant-vbguest")
-  puts 'Installing vagrant-vbguest Plugin...'
-  system('vagrant install vagrant-vbguest')
-end
+# unless Vagrant.has_plugin?("vagrant-vbguest")
+puts 'Installing vagrant-vbguest Plugin...'
+# system('vagrant install vagrant-vbguest')
+# end
 
-unless Vagrant.has_plugin?("vagrant-scp")
+# unless Vagrant.has_plugin?("vagrant-scp")
   puts 'Installing vagrant-scp Plugin...'
-  system('vagrant install vagrant-scp')
-end
+# system('vagrant install vagrant-scp')
+# end
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.box = "centos/7"
 #  config.vm.box_version = "1811.02"
   config.vm.hostname = NAME
-#  config.vm.network "private_network", ip: "192.168.50.10"
-  config.vm.synced_folder ".", "/vagrant"
+  config.vm.define= NAME
 
-# Port forwarding
+  #  config.vm.network "private_network", ip: "192.168.50.10"
+  config.vm.synced_folder ".", "/vagrant"
+  Port forwarding
 # config.vm.network "forwarded_port", guest: 22, host: 2220
 
   config.vm.provider "virtualbox" do |vb|

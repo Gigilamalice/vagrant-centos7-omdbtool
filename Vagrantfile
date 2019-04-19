@@ -12,6 +12,7 @@ echo LANG=en_US.utf-8 >> /etc/environment
 echo LC_ALL=en_US.utf-8 >> /etc/environment
 
 su vagrant
+cd ~
 
 git clone https://github.com/bgr/omdb-cli.git
 
@@ -32,15 +33,15 @@ VAGRANTFILE_API_VERSION = "2"
 # define hostname
 NAME = "omdbtool01"
 
-unless Vagrant.has_plugin?("vagrant-reload")
-  puts 'Installing vagrant-reload Plugin...'
-  system('vagrant plugin install vagrant-reload')
-end
+# unless Vagrant.has_plugin?("vagrant-reload")
+#  puts 'Installing vagrant-reload Plugin...'
+#  system('vagrant plugin install vagrant-reload')
+# end
 
-unless Vagrant.has_plugin?("vagrant-proxyconf")
-  puts 'Installing vagrant-proxyconf Plugin...'
-  system('vagrant plugin install vagrant-proxyconf')
-end
+# unless Vagrant.has_plugin?("vagrant-proxyconf")
+#  puts 'Installing vagrant-proxyconf Plugin...'
+#  system('vagrant plugin install vagrant-proxyconf')
+# end
 
 unless Vagrant.has_plugin?("vagrant-vbguest")
   puts 'Installing vagrant-vbguest Plugin...'

@@ -16,13 +16,20 @@ git clone https://github.com/Gigilamalice/vagrant-centos7-omdbtool.git vagrant-c
 cd vagrant-centos7-omdbtool
 ```
 
-Mise à jour du repo
+Update your origin/master (remote repo from your clone / upstream)
 
 ```shell
 git add .
 git commit -m "version initiale du projet"
 git push
 ```
+
+Refresh your head (local repo)
+
+```shell
+git pull
+```
+
 
 ## OmDB Tool
 

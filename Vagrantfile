@@ -12,16 +12,17 @@ echo LANG=en_US.utf-8 >> /etc/environment
 echo LC_ALL=en_US.utf-8 >> /etc/environment
 
 su vagrant
-cd ~
+cd /home/vagrant
+pwd
 
 git clone https://github.com/bgr/omdb-cli.git
 
-echo "alias omdbtool='python /home/vagrant/omdb-cli/omdbtool.py'" >> .bashrc
-echo "export OMDB_API_KEY=OMDBAPIKEY" >> .bashrc
-echo "export OMDB_API_KEY=b8c4671d" >> .bashrc
-source .bashrc
+echo "alias omdbtool='python /home/vagrant/omdb-cli/omdbtool.py'" >> /home/vagrant/.bashrc
+echo "export OMDB_API_KEY=OMDBAPIKEY" >> /home/vagrant/.bashrc
+echo "export OMDB_API_KEY=b8c4671d" >> /home/vagrant/.bashrc
 
-cd omdb-cli
+source  /home/vagrant/.bashrc
+
 omdbtool
 
 
@@ -73,5 +74,4 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.provision :reload
   config.vm.provision "shell", inline: "echo 'INSTALLER: Installation complete, CentOS 7 ready to use!'"
   
-
 end

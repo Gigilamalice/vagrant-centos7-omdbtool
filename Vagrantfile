@@ -19,7 +19,7 @@ echo LC_ALL=en_US.utf-8 >> /etc/environment
 
 su - vagrant -f << SOUSSCRIPT
 
-git clone https://github.com/bgr/omdb-cli.git new3
+git clone https://github.com/bgr/omdb-cli.git
 echo 'alias omdbtool="python /home/vagrant/omdb-cli/omdbtool.py"' >> ~/.bashrc
 echo 'export OMDB_API_KEY=OMDBAPIKEY' >> ~/.bashrc
 echo 'export OMDB_API_KEY=b8c4671d' >> ~/.bashrc

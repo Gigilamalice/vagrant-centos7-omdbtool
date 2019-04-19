@@ -55,8 +55,8 @@ Scp between guest and host
 
 ```shell
 # 1 - Install pluginvagrant plugin
-vagrant install vagrant-vbguest
-vagrant install vagrant-scp
+vagrant plugin install vagrant-vbguest
+vagrant plugin install vagrant-scp
 # 2 - Retreive ID vm
 vagrant global-status
 # 3a - Copy file or directory from Vagrant host machine to guest VM:

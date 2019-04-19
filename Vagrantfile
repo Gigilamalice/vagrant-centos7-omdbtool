@@ -11,19 +11,22 @@ yum install -y git
 echo LANG=en_US.utf-8 >> /etc/environment
 echo LC_ALL=en_US.utf-8 >> /etc/environment
 
+#su - vagrant -c "git clone https://github.com/bgr/omdb-cli.git"
+# sudo chown vagrant:vagrant omdb-cli -R
+#su - vagrant -c "echo 'export OMDB_API_KEY=OMDBAPIKEY' >> ~/.bashrc"
+#su - vagrant -c "echo 'export OMDB_API_KEY=b8c4671d' >> ~/.bashrc"
+# su - vagrant -c "~/omdb-cli/omdbtool.py"
 
-git clone https://github.com/bgr/omdb-cli.git
-cd /home/vagrant
-pwd
-sudo chown vagrant:vagrant omdb-cli -R
+su - vagrant -f << SOUSSCRIPT
 
-echo "alias omdbtool='python /home/vagrant/omdb-cli/omdbtool.py'" >> /home/vagrant/.bashrc
-echo "export OMDB_API_KEY=OMDBAPIKEY" >> /home/vagrant/.bashrc
-echo "export OMDB_API_KEY=b8c4671d" >> /home/vagrant/.bashrc
+git clone https://github.com/bgr/omdb-cli.git new3
+echo 'alias omdbtool="python /home/vagrant/omdb-cli/omdbtool.py"' >> ~/.bashrc
+echo 'export OMDB_API_KEY=OMDBAPIKEY' >> ~/.bashrc
+echo 'export OMDB_API_KEY=b8c4671d' >> ~/.bashrc
+~/omdb-cli/omdbtool.py
 
-source  /home/vagrant/.bashrc
+SOUSSCRIPT
 
-omdbtool
 
 SCRIPT
 

@@ -37,23 +37,23 @@ VAGRANTFILE_API_VERSION = "2"
 NAME = "omdbtool01"
 
 # unless Vagrant.has_plugin?("vagrant-reload")
-# puts 'Installing vagrant-reload Plugin...'
-#  system('vagrant plugin install vagrant-reload')
+puts 'Installing vagrant-reload Plugin...'
+system('vagrant plugin install vagrant-reload')
 # end
 
 # unless Vagrant.has_plugin?("vagrant-proxyconf")
-# puts 'Installing vagrant-proxyconf Plugin...'
-#  system('vagrant plugin install vagrant-proxyconf')
+puts 'Installing vagrant-proxyconf Plugin...'
+system('vagrant plugin install vagrant-proxyconf')
 # end
 
 # unless Vagrant.has_plugin?("vagrant-vbguest")
-# puts 'Installing vagrant-vbguest Plugin...'
-# system('vagrant install vagrant-vbguest')
+puts 'Installing vagrant-vbguest Plugin...'
+system('vagrant install vagrant-vbguest')
 # end
 
 # unless Vagrant.has_plugin?("vagrant-scp")
-#  puts 'Installing vagrant-scp Plugin...'
-# system('vagrant install vagrant-scp')
+puts 'Installing vagrant-scp Plugin...'
+system('vagrant install vagrant-scp')
 # end
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
@@ -74,8 +74,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   end
 
   config.vm.provision "shell", inline: $samplescript
-  # config.vm.provision "shell", path: "scripts/install.sh"
-  config.vm.provision :reload
+  #config.vm.provision "shell", path: "scripts/install.sh"
+  # To reload reboot guest 
+  #config.vm.provision :reload
   config.vm.provision "shell", inline: "echo 'INSTALLER: Installation complete, CentOS 7 ready to use!'"
   
 end

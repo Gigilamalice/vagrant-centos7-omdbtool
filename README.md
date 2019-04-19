@@ -88,7 +88,7 @@ vagrant rsyn-auto
 Delete vagrant box
 
 ```shell
-vagrant destroy
+vagrant destroy -f
 ```
 
 vagrant ssh config for putty by example

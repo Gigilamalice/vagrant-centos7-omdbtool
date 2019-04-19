@@ -23,7 +23,7 @@ git clone https://github.com/bgr/omdb-cli.git
 echo 'alias omdbtool="python /home/vagrant/omdb-cli/omdbtool.py"' >> ~/.bashrc
 echo 'export OMDB_API_KEY=OMDBAPIKEY' >> ~/.bashrc
 echo 'export OMDB_API_KEY=b8c4671d' >> ~/.bashrc
-~/omdb-cli/omdbtool.py
+export OMDB_API_KEY=b8c4671d
 ~/omdb-cli/omdbtool.py -t Cars | wget `sed -n '/^poster/{n;p;}'`
 
 SOUSSCRIPT

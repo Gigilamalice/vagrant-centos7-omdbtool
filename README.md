@@ -4,8 +4,11 @@ Create a vagrant box CENTOS/7 to run OMDBTOOL to retreive by example movies thum
 
 ## Projects and references
 
-* <https://github.com/osmiyaki/omdbtool>
-* <https://linuxacademy.com/blog/linux/vagrant-cheat-sheet-get-started-with-vagrant/>
+* OMDBTOOL <https://github.com/osmiyaki/omdbtool>
+* VAGRANT <https://linuxacademy.com/blog/linux/vagrant-cheat-sheet-get-started-with-vagrant/>
+* Stackoverflow : How to add Machine Name 
+* Stackoverflow : How to add option variable
+  * <https://stackoverflow.com/questions/17845637/how-to-change-vagrant-default-machine-name>
 
 ## Github
 

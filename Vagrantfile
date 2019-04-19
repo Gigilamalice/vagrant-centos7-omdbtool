@@ -7,11 +7,6 @@ NAME = "omdbtool"
 # define OMDB API KEY
 OMDB_API_KEY = "b8c4671d"
 
-puts 'OMDB API KEY: [OMDB_API_KEY]'
-puts  [NAME]
-
-
-
 $deployuserrootscript = <<-SCRIPT
 echo ================================================================================
 echo I am provisioning linux package and configuration ...

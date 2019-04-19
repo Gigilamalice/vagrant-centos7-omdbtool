@@ -30,7 +30,6 @@ Refresh your head (local repo)
 git pull
 ```
 
-
 ## OmDB Tool
 
 Create an OMDB API KEY: <http://www.omdbapi.com/apikey.aspx>

@@ -1,61 +1,56 @@
-$samplescript = <<SCRIPT
-
-# yum update -y
-
-yum install -y wget
-yum install -y git
-# yum -y install python-pip -y
-
-# fix locale warning
-
-echo LANG=en_US.utf-8 >> /etc/environment
-echo LC_ALL=en_US.utf-8 >> /etc/environment
-
-#su - vagrant -c "git clone https://github.com/bgr/omdb-cli.git"
-# sudo chown vagrant:vagrant omdb-cli -R
-#su - vagrant -c "echo 'export OMDB_API_KEY=OMDBAPIKEY' >> ~/.bashrc"
-#su - vagrant -c "echo 'export OMDB_API_KEY=b8c4671d' >> ~/.bashrc"
-# su - vagrant -c "~/omdb-cli/omdbtool.py"
-
-su - vagrant -f << SOUSSCRIPT
-
-git clone https://github.com/bgr/omdb-cli.git
-echo 'alias omdbtool="python /home/vagrant/omdb-cli/omdbtool.py"' >> ~/.bashrc
-echo 'export OMDB_API_KEY=OMDBAPIKEY' >> ~/.bashrc
-echo 'export OMDB_API_KEY=b8c4671d' >> ~/.bashrc
-export OMDB_API_KEY=b8c4671d
-~/omdb-cli/omdbtool.py -t Cars | wget `sed -n '/^poster/{n;p;}'`
-
-SOUSSCRIPT
-
-
-SCRIPT
-
 # Vagrantfile API/syntax version. Don't touch unless you know what you're doing!
 VAGRANTFILE_API_VERSION = "2"
 
 # define hostname
-NAME = "omdbtool01"
+NAME = "omdbtool"
 
-# unless Vagrant.has_plugin?("vagrant-reload")
-# puts 'Installing vagrant-reload Plugin...'
-# system('vagrant plugin install vagrant-reload')
-# end
+# define OMDB API KEY
+OMDB_API_KEY = "b8c4671d"
 
-# unless Vagrant.has_plugin?("vagrant-proxyconf")
-# puts 'Installing vagrant-proxyconf Plugin...'
-# system('vagrant plugin install vagrant-proxyconf')
-# end
+puts 'OMDB API KEY: [OMDB_API_KEY]'
+puts  [NAME]
 
-# unless Vagrant.has_plugin?("vagrant-vbguest")
-#puts 'Installing vagrant-vbguest Plugin...'
-# system('vagrant install vagrant-vbguest')
-# end
 
-# unless Vagrant.has_plugin?("vagrant-scp")
-# puts 'Installing vagrant-scp Plugin...'
-# system('vagrant install vagrant-scp')
-# end
+
+$deployuserrootscript = <<-SCRIPT
+echo ================================================================================
+echo I am provisioning linux package and configuration ...
+echo
+echo as user: $(whoami), at current path: $(pwd), on hostname: $(hostname)
+echo with args passed: $1
+echo
+echo ================================================================================
+
+# yum update -y
+# yum -y install python-pip -y
+yum install -y wget
+yum install -y git
+
+# fix locale warning
+echo LANG=en_US.utf-8 >> /etc/environment
+echo LC_ALL=en_US.utf-8 >> /etc/environment
+
+SCRIPT
+
+$deployuservagrantscript = <<-SCRIPT
+echo ================================================================================
+echo I am provisioning omdbtool ...
+echo
+echo as user: $(whoami), at current path: $(pwd), on hostname: $(hostname)
+echo with args passed: $1
+echo  
+echo ================================================================================
+
+git clone https://github.com/bgr/omdb-cli.git
+echo 'alias omdbtool="python ~/omdb-cli/omdbtool.py"' >> ~/.bashrc
+echo export OMDB_API_KEY=$1 >> ~/.bashrc
+export OMDB_API_KEY=$1
+mkdir /vagrant/output
+cd /vagrant/output
+
+~/omdb-cli/omdbtool.py -t Cars | wget `sed -n '/^poster/{n;p;}'`
+
+SCRIPT
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.box = "centos/7"
@@ -74,10 +69,12 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     vb.cpus = "2"
   end
 
-  config.vm.provision "shell", inline: $samplescript
+  config.vm.provision "shell", privileged: true,  keep_color: true, inline: $deployuserrootscript, args:[NAME]
+  config.vm.provision "shell", privileged: false, keep_color: true, inline: $deployuservagrantscript, args:[OMDB_API_KEY]
+  config.vm.provision "shell", inline: "echo 'INSTALLER: Installation complete, CentOS 7 ready to use!'"
+  
   #config.vm.provision "shell", path: "scripts/install.sh"
   # To reload reboot guest 
   #config.vm.provision :reload
-  config.vm.provision "shell", inline: "echo 'INSTALLER: Installation complete, CentOS 7 ready to use!'"
-  
+
 end
